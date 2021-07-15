@@ -53,7 +53,7 @@ function randomInteger(min, max) {
 function checkWords(){
     if (langSecondData[idWord].trim().toUpperCase() === document.getElementById('inputWord').value.trim().toUpperCase()){
         lastAnswer = true;
-        document.getElementById('btCheck').style.background = `green`;
+        document.getElementById('btCheck').style.background = `darkgreen`;
         counterGood += 1;
         timeUpdate = 500;
         document.getElementById('counters').style.display = `block`;
@@ -64,7 +64,7 @@ function checkWords(){
             document.getElementById('answer').innerText = `вы ничего не ввели`;
         }else{
             document.getElementById('answer').innerText = `${langSecondData[idWord]}`;
-            document.getElementById('btCheck').style.background = `red`;
+            document.getElementById('btCheck').style.background = `#ff2b2b`;
             counterBad += 1;
             document.getElementById('counters').style.display = `block`;
         }
@@ -77,7 +77,7 @@ function checkWords(){
     setTimeout(() => {
         searchWord(langFirstData);
         document.getElementById('answer').innerText = ``;
-        document.getElementById('btCheck').style.background = `darkgray`;
+        document.getElementById('btCheck').style.background = `#3F51B5`;
         document.getElementById('preAnswer').style.display = `none`;
         document.getElementById('answer').style.color = `black`;
     }, timeUpdate)
@@ -135,3 +135,5 @@ function changeLangMode() {
     lastAnswer = true;
     searchWord(langFirstData);
 }
+
+
