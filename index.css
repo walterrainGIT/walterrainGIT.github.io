@@ -1,0 +1,68 @@
+.main{
+    background: darkgray;
+    position: relative;
+    max-width: 50%;
+    max-height: 50%;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.choisFile{
+   max-width: 50%;
+    max-height: 50%;
+    text-align: center;
+    margin: auto;
+    padding: 1%;
+}
+
+.trainig{
+    display: none;
+}
+
+.counters {
+    max-width: 20%;
+    max-height: 10%;
+    text-align: center;
+    margin-left: 1%;
+    margin-top: -1%;
+    border: 3px solid black;
+    border-radius: 10px;
+    display: none;
+}
+
+.controlPanel {
+    max-width: 20%;
+    max-height: 10%;
+    text-align: center;
+    margin-right: 5%;
+    margin-top: 1%;
+    float: right;
+}
+
+.formLoadPosition {
+    margin-top: -30%;
+    margin-left: 110%;
+}
+
+.btLoadManual {
+    background: blue;
+    font-family: "Trebuchet MS", cursive;
+    font-weight: bold;
+    color: white;
+}
+
+.inputField{
+  margin-left: 40%;
+}
+
+.btCheck{
+    margin-left: 10%;
+}
+
+.origWord, .answer{
+    font-family: "Trebuchet MS", cursive;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+

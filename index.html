@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word training</title>
+    <script src="index.js"></script>
+    <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="main">
+
+
+     
+
+        <div class="choisFile">
+            <div id="readFile">Выберите файл со словами: <input type="file" onchange="readFile(this)" id="file"></div>
+            <div id="errorReadFile"></div>
+        </div>
+
+        <div class="trainig" id="training">
+            <div class="controlPanel">
+                
+                <input id="btChangeMode" type="submit" value="EN -> RU" onclick="changeLangMode()">
+                <form class="formLoadPosition" method="get" action="https://github.com/walterrainGIT/walterrainGIT.github.io/raw/main/Words.xlsx">
+                    <button type="submit" class="btLoadManual">?</button>
+                </form>
+
+            </div>
+
+            <div class="counters" id="counters">
+                <div style="float: left">Верных ответов: <span id="counterGood"></span></div><div>/ <sppan id="percentageGood"></sppan> %</div>
+                <div>Не верных ответов: <span id="counterBad"></span></div>
+                <div>Всего ответов: <span id="counterTotal"></span></div>
+                <div>Время ответа: <span id="lastTime"></span></div>
+                <div>Время работы: <span id="workTime"></span></div>
+            </div>
+
+            <div class="inputField">
+                <div>Введите перевод: <span id="origWord" class="origWord"></span></div>
+                <form onsubmit="return false">
+                    <div><input type="text" id="inputWord"></div>
+                    <div class="btCheck"><input id="btCheck" type="submit" value="Check" onclick="checkWords()"></div>
+                </form>
+                <div id="preAnswer" style="display: none">Правильный ответ: <span id="answer" class="answer"></span></div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
