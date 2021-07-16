@@ -35,7 +35,7 @@ function checkFile() {
 //выбор рандомного слова
 function searchWord(array){
     let num;
-    lastAnswer === true ? num = randomInteger(0, (array.length)) : num = lastAnswer;
+    lastAnswer === true ? num = randomInteger(0, (array.length - 1)) : num = lastAnswer;
     idWord = num;
     if(array[num] === undefined || array[num] == null){
         searchWord();
