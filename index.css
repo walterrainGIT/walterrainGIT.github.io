@@ -29,7 +29,7 @@ body, html {
     position: relative;
     height: 100%;
     width: 5%;
-    margin-left: 95%;
+    margin-left: 205%;
 }
 
 .imgLogo {
@@ -95,7 +95,7 @@ body, html {
     user-select: none
 }
 .example-1 .label {
-    width: 10%;
+    width: 45%;
     border: 2px dashed grey;
     border-radius: 5px;
     display: block;
@@ -106,8 +106,8 @@ body, html {
 }
 .example-1 .label i {
         display: block;
-        font-size: 42px;
-        padding-bottom: 16px
+        font-size: 220%;
+        padding-bottom: 20%;
     }
 .example-1 .label i, .example-1 .label .title {
         color: grey;
