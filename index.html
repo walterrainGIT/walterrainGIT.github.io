@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/Wsrlogo.png" type="image">
     <title>Word training</title>
-    <script src="index.js"></script>
-    <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -29,7 +27,9 @@
 
         <div class="main">
             <form method="get" action="https://github.com/walterrainGIT/walterrainGIT.github.io/raw/main/README.pdf">
-                <button type="submit" class="btLoadManual">?</button>
+                <div class="squareBtManual">
+                    <button type="submit" class="btLoadManual">?</button>
+                </div>
             </form>
             <div class="choiseFile">
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -59,18 +59,20 @@
                     <div class="textEnter">Введите перевод: <span id="origWord" class="origWord"></span></div>
                     <form onsubmit="return false">
                         <div><input type="text" id="inputWord"></div>
-                        <div><input class="btCheck" id="btCheck" type="submit" value="Check" onclick="checkWords()"></div>
+                        <div><input class="btCheck" id="btCheck" type="submit" value="Check"></div>
                     </form>
                     <div id="preAnswer" class="preAnswer">Правильный ответ: <span id="answer" class="answer"></span></div>
                 </div>
 
                 <div class="controlPanel">
-                    <input class="btChangeMode" id="btChangeMode" type="submit" value="EN -> RU" onclick="changeLangMode()">
+                    <input class="btChangeMode" id="btChangeMode" type="submit" value="EN -> RU">
                 </div>
 
             </div>
         </div>
     </selection>
+    <script src="index.js"></script>
+    <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </body>
 </html>
 

@@ -10,6 +10,32 @@ let workTime = 0;
 let lastAnswer = true;
 let langMode = 0;
 
+let EloadFile = document.getElementById(`file`);
+let EreadFile = document.getElementById(`readFile`);
+let Etraining = document.getElementById(`training`);
+let EerrorReadFile = document.getElementById(`errorReadFile`);
+let Ecounters = document.getElementById(`counters`);
+let EcounterGood = document.getElementById(`counterGood`);
+let EpercentageGood = document.getElementById(`percentageGood`);
+let EcounterBad = document.getElementById(`counterBad`);
+let EcounterTotal = document.getElementById(`counterTotal`);
+let ElastTime = document.getElementById(`lastTime`);
+let EworkTime = document.getElementById(`workTime`);
+
+let EorigWord = document.getElementById(`origWord`);
+let EinputWord = document.getElementById(`inputWord`);
+let EbtCheck = document.getElementById(`btCheck`);
+let Eanswer = document.getElementById(`answer`);
+let EpreAnswer = document.getElementById(`preAnswer`);
+let EbtChangeMode = document.getElementById(`btChangeMode`);
+
+
+let EheadMedal = document.getElementById(`headMedal`);
+let EmedalImg = document.getElementById(`medalImg`);
+let EheadText = document.getElementById(`headText`);
+
+EbtCheck.addEventListener("click", checkWords);
+EbtChangeMode.addEventListener("click", changeLangMode);
 
 //чтение excel файла 
 function readFile(input) {
@@ -25,11 +51,11 @@ function readFile(input) {
 function checkFile() {
     if (langFirstData !== undefined && langFirstData.length > 0 && langSecondData !== undefined && langSecondData.length > 0) {
         searchWord(langFirstData);
-        document.getElementById('readFile').style.display = `none`;
-        document.getElementById('training').style.display = `flex`;
+        EreadFile.style.display = `none`;
+        Etraining.style.display = `flex`;
     } else {
-        document.getElementById('errorReadFile').style.display = `block`;
-        document.getElementById('errorReadFile').innerText = `Выбранный файл имеет неверную структуру, выберите другой файл`;
+        EerrorReadFile.style.display = `block`;
+        EerrorReadFile.innerText = `Выбранный файл имеет неверную структуру, выберите другой файл`;
     }
 }
 //выбор рандомного слова
@@ -40,7 +66,7 @@ function searchWord(array){
     if(array[num] === undefined || array[num] == null){
         searchWord();
     } else {
-        document.getElementById('origWord').innerText = `${array[num]}`;
+        EorigWord.innerText = `${array[num]}`;
         lastTime = 0;
         console.log(langSecondData[idWord])
     }
@@ -53,33 +79,33 @@ function randomInteger(min, max) {
 function checkWords(){
     if (langSecondData[idWord].trim().toUpperCase() === document.getElementById('inputWord').value.trim().toUpperCase()){
         lastAnswer = true;
-        document.getElementById('btCheck').style.background = `darkgreen`;
+        EbtCheck.style.background = `darkgreen`;
         counterGood += 1;
         timeUpdate = 500;
-        document.getElementById('counters').style.display = `block`;
+        Ecounters.style.display = `block`;
     }else{
         lastAnswer = idWord;
-        if(document.getElementById('inputWord').value.trim().toUpperCase() === ``){
-            document.getElementById('answer').style.color = `red`;
-            document.getElementById('answer').innerText = `вы ничего не ввели`;
+        if (EinputWord.value.trim().toUpperCase() === ``){
+            Eanswer.style.color = `red`;
+            Eanswer.innerText = `вы ничего не ввели`;
         }else{
-            document.getElementById('answer').innerText = `${langSecondData[idWord]}`;
-            document.getElementById('btCheck').style.background = `#ff2b2b`;
+            Eanswer.innerText = `${langSecondData[idWord]}`;
+           EbtCheck.style.background = `#ff2b2b`;
             counterBad += 1;
-            document.getElementById('counters').style.display = `block`;
+            Ecounters.style.display = `block`;
         }
-        document.getElementById('preAnswer').style.display = `block`;
+        EpreAnswer.style.display = `block`;
         timeUpdate = 1500;
     }
     updateCounter();
     idWord = undefined;
-    document.getElementById('inputWord').value = ``;
+   EinputWord.value = ``;
     setTimeout(() => {
         searchWord(langFirstData);
-        document.getElementById('answer').innerText = ``;
-        document.getElementById('btCheck').style.background = `#3F51B5`;
-        document.getElementById('preAnswer').style.display = `none`;
-        document.getElementById('answer').style.color = `black`;
+       Eanswer.innerText = ``;
+       EbtCheck.style.background = `#3F51B5`;
+        EpreAnswer.style.display = `none`;
+        Eanswer.style.color = `black`;
     }, timeUpdate)
 }
 //обновление счетчиков при ответе
@@ -88,33 +114,31 @@ function updateCounter(){
     if(counterBad === 0 && counterGood === 0){
         percentageGood = 0;
     }
-    document.getElementById('counterGood').innerText = `${counterGood} `;
-    document.getElementById('percentageGood').innerText = `${percentageGood.toFixed(0)}`;
-    document.getElementById('counterBad').innerText = `${counterBad}`;
-    document.getElementById('counterTotal').innerText = `${counterGood+counterBad}`;
-    document.getElementById('lastTime').innerText = `${createTime(lastTime)}`;
+    EcounterGood.innerText = `${counterGood} `;
+    EpercentageGood.innerText = `${percentageGood.toFixed(0)}`;
+    EcounterBad.innerText = `${counterBad}`;
+    EcounterTotal.innerText = `${counterGood+counterBad}`;
+    ElastTime.innerText = `${createTime(lastTime)}`;
     checkMedal();
 }
 
 function checkMedal() {
 
     if (percentageGood >= 50) {
-        document.getElementById('headMedal').style.display = `inline-block`;
+       EheadMedal.style.display = `inline-block`;
         if (percentageGood >= 50 && percentageGood < 70) {
-            document.getElementById(`medalImg`).src = `images/medalion.png`;
+           EmedalImg.src = `images/medalion.png`;
         } else if (percentageGood >= 70 && percentageGood < 80) {
-            document.getElementById(`medalImg`).src = `images/bronzeMedal.png`;
+            EmedalImg.src = `images/bronzeMedal.png`;
         } else if (percentageGood >= 80 && percentageGood < 90) {
-            document.getElementById(`medalImg`).src = `images/silverMedal.png`;
+            EmedalImg.src = `images/silverMedal.png`;
         } else if (percentageGood >= 90) {
-            document.getElementById(`medalImg`).src = `images/goldMedal.png`;
+            EmedalImg.src = `images/goldMedal.png`;
         }
-        document.getElementById('headLogo').style.marginLeft = `88%`;
-        document.getElementById('headText').style.margin = `1% auto 0 5%`;
+        EheadText.style.margin = `1% auto 0 4%`; 
     } else {
-        document.getElementById('headMedal').style.display = `none`;
-        document.getElementById('headLogo').style.marginLeft = `79%`;
-        document.getElementById('headText').style.margin = `1% auto 0 1%`;
+        EheadMedal.style.display = `none`;
+        EheadText.style.margin = `1% auto 0 1%`; 
     }
 }
 
@@ -141,16 +165,16 @@ function addZero(data){
 setInterval(() => {
     lastTime += 1;
     workTime += 1;
-    document.getElementById('workTime').innerText = `${createTime(workTime)}`;
+    EworkTime.innerText = `${createTime(workTime)}`;
 }, 1000);
 //смена языков местами
 function changeLangMode() {
     let langData = [];
     if (langMode === 0) {
-        document.getElementById(`btChangeMode`).value = `RU -> EN`;
+        EbtChangeMode.value = `RU -> EN`;
         langMode = 1;
     } else {
-        document.getElementById(`btChangeMode`).value = `EN -> RU`;
+        EbtChangeMode.value = `EN -> RU`;
         langMode = 0;
     }
     langData = langFirstData;
