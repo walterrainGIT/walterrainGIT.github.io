@@ -95,7 +95,7 @@ body, html {
     user-select: none
 }
 .example-1 .label {
-    width: 120px;
+    width: 10%;
     border: 2px dashed grey;
     border-radius: 5px;
     display: block;
