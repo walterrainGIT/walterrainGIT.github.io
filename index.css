@@ -1,0 +1,242 @@
+
+body, html {
+    width: 100vh;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: white;
+    width: 200%;
+    height: 7%;
+}
+
+.headMedal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    margin-left: -18%;
+    width: 5%;
+}
+
+.headText {
+    display: inline-block;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    float: left;
+    margin: 1% auto 0 1%;
+}
+
+.headLogo {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    margin-left: 79%; 
+    width: 5%;
+}
+
+
+
+.imgLogo {
+    max-width: none;
+    min-width: auto;
+    min-height: auto;
+    height: 100%;
+    position: absolute;
+}
+
+.page {
+    background: rgb(242, 243, 245);
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.main {
+    background: white;
+    margin: auto;
+    margin-top: 5%;
+    width: 5%;
+    height: 5%;
+    box-shadow: 0 1px 8px #33333333;
+    width: 50%;
+    height: 30%;
+    z-index: 100;
+}
+
+.btLoadManual {
+    display: inline-block;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: rgb(0, 145, 220);
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    font-size: 100%;
+    margin-top: 1%;
+    margin-left: 95%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.choiseFile {
+    max-width: 50%;
+    max-height: 50%;
+    text-align: center;
+    margin: auto;
+    margin-left: 37%;
+    padding: 0.5%;
+    display: block;
+}
+
+.example-1 .form-group {
+    padding: 1em;
+    margin: 1em
+}
+.example-1 input[type=file] {
+    outline: 0;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none
+}
+.example-1 .label {
+    width: 45%;
+    border: 2px dashed grey;
+    border-radius: 5px;
+    display: block;
+    padding: 1.2em;
+    transition: border 300ms ease;
+    cursor: pointer;
+    text-align: center
+}
+.example-1 .label i {
+        display: block;
+        font-size: 220%;
+        padding-bottom: 20%;
+    }
+.example-1 .label i, .example-1 .label .title {
+        color: grey;
+        transition: 200ms color
+    }
+.example-1 .label:hover {
+        border: 2px solid #000
+    }
+.example-1 .label:hover i, .example-1 .label:hover .title {
+            color: #000
+        }
+
+.trainig {
+    display: none;
+}
+
+
+.counters {
+    display: block;
+    float: left;
+    max-width: 30%;  
+    margin-left: 1%;
+    margin-top: 2%;
+}
+
+.counter {
+    display: flex;
+    text-align: center;
+    font-family: font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 100%;
+    padding: 0;
+    margin: auto;
+}
+
+.inputField {
+    display: block;
+    max-width: 50%;
+    margin: auto;
+    margin: auto;
+    text-align: center;
+    font-family: Tahoma;
+}
+
+.textEnter {
+    color: black;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 130%;
+}
+
+input[type="text"] {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    background: #ffffff !important;
+    outline: none;
+    width: 95%;
+    color: #cccccc;
+    font-size: 110%;
+    font-family: Tahoma;
+    color: #000000;
+    border: 1px solid #000000;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 5px 10px 5px 10px;
+}
+
+.btCheck {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 4%;
+    border: none;
+    background-color: #3F51B5;
+    color: #fff;
+    border-radius: 5px;
+    width: 50%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 105%;
+    box-shadow: 0 1px 8px black;
+}
+
+.preAnswer {
+    display: none;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 100%;
+}
+
+.controlPanel {
+    display: block;
+    float: right;
+    max-width: 20%;
+    margin-right: 1%;
+}
+
+.btChangeMode {
+    width: 100%;
+    height: 20%;
+    background: rgb(0, 145, 220);
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 80%;
+    margin-top: 125%;
+    box-shadow: 0 1px 8px #33333333;
+}
+
+.origWord, .answer{
+    font-family: "Trebuchet MS", cursive;
+    font-size: 105%;
+    font-weight: bold;
+}
+
+
+

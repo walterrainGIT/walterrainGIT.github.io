@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/Wsrlogo.png" type="image">
+    <title>Word training</title>
+    <script src="index.js"></script>
+    <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="header">
+
+        <div class="headMedal" id="headMedal">
+            <img class="imgLogo" src="images/medalion.png" id="medalImg" alt="medal">
+        </div>
+
+        <div class="headText" id="headText">WSR - National team</div>
+
+        <div class="headLogo" id="headLogo">
+            <img class="imgLogo" src="images/WSR_NT.png" alt="logoWSR" id="logoImg">
+        </div>
+    </header>
+
+
+    <selection class="page">
+
+        <div class="main">
+            <form method="get" action="https://github.com/walterrainGIT/walterrainGIT.github.io/raw/main/README.pdf">
+                <button type="submit" class="btLoadManual">?</button>
+            </form>
+            <div class="choiseFile">
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                <div class="example-1" id="readFile">
+                    <div class="form-group">
+                        <label class="label">
+                            <i class="material-icons">attach_file</i>
+                            <span class="title">Выберите файл со словами:</span>
+                            <input type="file" onchange="readFile(this)" id="file">
+                        </label>
+                    </div>
+                </div>
+                <div id="errorReadFile"></div>
+            </div>
+
+            <div class="trainig" id="training">
+
+                <div class="counters" id="counters">
+                    <div class="counter">Верных ответов:&ensp;<span id="counterGood"></span>&ensp;/&ensp;<sppan id="percentageGood"></sppan>%</div>
+                    <div class="counter">Не верных ответов:&ensp;<span id="counterBad"></span></div>
+                    <div class="counter">Всего ответов:&ensp;<span id="counterTotal"></span></div>
+                    <div class="counter">Время ответа:&ensp;<span id="lastTime"></span></div>
+                    <div class="counter">Время работы:&ensp;<span id="workTime"></span></div>
+                </div>
+
+                <div class="inputField">
+                    <div class="textEnter">Введите перевод: <span id="origWord" class="origWord"></span></div>
+                    <form onsubmit="return false">
+                        <div><input type="text" id="inputWord"></div>
+                        <div><input class="btCheck" id="btCheck" type="submit" value="Check" onclick="checkWords()"></div>
+                    </form>
+                    <div id="preAnswer" class="preAnswer">Правильный ответ: <span id="answer" class="answer"></span></div>
+                </div>
+
+                <div class="controlPanel">
+                    <input class="btChangeMode" id="btChangeMode" type="submit" value="EN -> RU" onclick="changeLangMode()">
+                </div>
+
+            </div>
+        </div>
+    </selection>
+</body>
+</html>
+
+
