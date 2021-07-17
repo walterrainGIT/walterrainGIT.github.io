@@ -100,7 +100,7 @@ box-sizing: border-box;
     user-select: none
 }
 .example-1 .label {
-    width: 45%;
+    width: 57%;
     border: 2px dashed grey;
     border-radius: 5px;
     display: block;
