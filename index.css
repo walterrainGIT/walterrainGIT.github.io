@@ -208,6 +208,22 @@ input[type="text"] {
     box-shadow: 0 1px 8px black;
     margin-top: 1%;
     margin-bottom: 1%;
+    float: left;
+}
+
+.btLearnedWords {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 4%;
+    border: none;
+    background-color: #3F51B5;
+    color: #fff;
+    border-radius: 5px;
+    width: 50%;
+    font-size: 1.1vw;
+    box-shadow: 0 1px 8px black;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .preAnswer {
@@ -236,6 +252,10 @@ input[type="text"] {
     font-size: 1vw;
     margin-top: 120%;
     box-shadow: 0 1px 8px #33333333;
+}
+
+.congrat{
+    display: none;
 }
 
 .origWord, .answer {

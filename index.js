@@ -1,5 +1,6 @@
 let langFirstData = [];
 let langSecondData = [];
+let wordLearned = [];
 let idWord;
 let counterGood = 0;
 let counterBad = 0;
@@ -13,6 +14,7 @@ let langMode = 0;
 let EloadFile = document.getElementById(`file`);
 let EreadFile = document.getElementById(`readFile`);
 let Etraining = document.getElementById(`training`);
+let Econgrat = document.getElementById(`congrat`);
 let EerrorReadFile = document.getElementById(`errorReadFile`);
 let Ecounters = document.getElementById(`counters`);
 let EcounterGood = document.getElementById(`counterGood`);
@@ -25,6 +27,7 @@ let EworkTime = document.getElementById(`workTime`);
 let EorigWord = document.getElementById(`origWord`);
 let EinputWord = document.getElementById(`inputWord`);
 let EbtCheck = document.getElementById(`btCheck`);
+let EbtLearnedWords = document.getElementById(`btLearnedWords`);
 let Eanswer = document.getElementById(`answer`);
 let EpreAnswer = document.getElementById(`preAnswer`);
 let EbtChangeMode = document.getElementById(`btChangeMode`);
@@ -36,6 +39,7 @@ let EheadText = document.getElementById(`headText`);
 
 EbtCheck.addEventListener("click", checkWords);
 EbtChangeMode.addEventListener("click", changeLangMode);
+EbtLearnedWords.addEventListener("click", writeFile);
 
 //чтение excel файла 
 function readFile(input) {
@@ -43,16 +47,19 @@ function readFile(input) {
         for (i = 0; i < data.length; i++) {
             langFirstData[i] = (`${data[i]}`).split(`,`)[0];
             langSecondData[i] = (`${data[i]}`).split(`,`)[1];
+            wordLearned[i] = (`${data[i]}`).split(`,`)[2];
         }
         checkFile();
     });
 };
 //проверка правильности чтения/корректности файла
 function checkFile() {
-    if (langFirstData !== undefined && langFirstData.length > 0 && langSecondData !== undefined && langSecondData.length > 0) {
-        searchWord(langFirstData);
-        EreadFile.style.display = `none`;
-        Etraining.style.display = `flex`;
+    if (langFirstData !== undefined && langFirstData.length > 0 && langSecondData !== undefined && langSecondData.length > 0 && wordLearned !== undefined && wordLearned.length > 0) {
+        if(checkLearn() === false){
+            searchWord(langFirstData);
+            EreadFile.style.display = `none`;
+            Etraining.style.display = `flex`;
+        }
     } else {
         EerrorReadFile.style.display = `block`;
         EerrorReadFile.innerText = `Выбранный файл имеет неверную структуру, выберите другой файл`;
@@ -63,12 +70,14 @@ function searchWord(array){
     let num;
     lastAnswer === true ? num = randomInteger(0, (array.length - 1)) : num = lastAnswer;
     idWord = num;
-    if(array[num] === undefined || array[num] == null){
-        searchWord();
+    if(array[num] === undefined || array[num] == null || wordLearned[num] === `Learned`){
+        if(checkLearn() === false){
+            searchWord(langFirstData);
+        }
     } else {
         EorigWord.innerText = `${array[num]}`;
         lastTime = 0;
-        console.log(langSecondData[idWord])
+        console.log(langSecondData[idWord]);
     }
 }
 function randomInteger(min, max) {
@@ -121,7 +130,7 @@ function updateCounter(){
     ElastTime.innerText = `${createTime(lastTime)}`;
     checkMedal();
 }
-
+//медаль, зависит от процентов правильных ответов
 function checkMedal() {
 
     if (percentageGood >= 50) {
@@ -141,7 +150,37 @@ function checkMedal() {
         EheadText.style.margin = `1% auto 0 1%`; 
     }
 }
-
+//проверка все ли слова выучены
+function checkLearn(){
+    if(checkCountWords(wordLearned, `Learned`) >= wordLearned.length) {
+        learnAllWords(checkCountWords(wordLearned, `Learned`));
+        return true;
+    } else {
+        return false;
+    }
+}
+//количество строк с заданной строкой
+function checkCountWords(array, str) {
+    let num = 0;
+    let n = [];
+    for(let i=0; i < array.length; i++){
+        array[i] === str ? num += 1 : num += 0;
+       /* //выведет в консоль номер строки с ошибкой в файле или номера не выученных строк
+        if(array[i] !== str){
+            n[n.length + 1] = i + 1;
+        }
+        */
+    }
+   // console.log(`${n}`)
+    return num;
+}
+//поздравление при усвоении всех слов
+function learnAllWords(count){
+    EreadFile.style.display = `none`;
+    Etraining.style.display = `none`;
+    Econgrat.style.display = `block`;
+    Econgrat.innerText = `The end. You are learned ${count} words`;
+}
 //перевод насчитанных секунд в формат "ЧЧ:ММ:СС"
 function createTime(time){
     let hours = time / 3600;
@@ -182,6 +221,12 @@ function changeLangMode() {
     langSecondData = langData;
     lastAnswer = true;
     searchWord(langFirstData);
+}
+
+function writeFile(){
+    writeXlsxFile(input.files[0]).then(function (data) {
+
+    });
 }
 
 

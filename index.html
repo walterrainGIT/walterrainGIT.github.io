@@ -59,7 +59,10 @@
                     <div class="textEnter">Введите перевод: <span id="origWord" class="origWord"></span></div>
                     <form onsubmit="return false">
                         <div><input type="text" id="inputWord"></div>
-                        <div><input class="btCheck" id="btCheck" type="submit" value="Check"></div>
+                        <div>
+                            <input class="btCheck" id="btCheck" type="submit" value="Check">
+                            <input class="btLearnedWords" id="btLearnedWords" type="submit" value="Learned">
+                        </div>
                     </form>
                     <div id="preAnswer" class="preAnswer">Правильный ответ: <span id="answer" class="answer"></span></div>
                 </div>
@@ -69,6 +72,9 @@
                 </div>
 
             </div>
+
+            <div class="congrat" id="congrat"></div>
+
         </div>
     </selection>
     <script src="index.js"></script>
