@@ -205,6 +205,7 @@ setInterval(() => {
     lastTime += 1;
     workTime += 1;
     EworkTime.innerText = `${createTime(workTime)}`;
+    EbtLearnedWords.style.background = `#3F51B5`;
 }, 1000);
 //смена языков местами
 function changeLangMode() {
@@ -224,9 +225,9 @@ function changeLangMode() {
 }
 
 function writeFile(){
-    writeXlsxFile(input.files[0]).then(function (data) {
-
-    });
+    wordLearned[idWord] = `Learned`;
+    EbtLearnedWords.style.background = `darkgreen`;
+    checkLearn();
 }
 
 
