@@ -15,6 +15,7 @@ let EloadFile = document.getElementById(`file`);
 let EreadFile = document.getElementById(`readFile`);
 let Etraining = document.getElementById(`training`);
 let Econgrat = document.getElementById(`congrat`);
+let EcongratText = document.getElementById(`congratText`);
 let EerrorReadFile = document.getElementById(`errorReadFile`);
 let Ecounters = document.getElementById(`counters`);
 let EcounterGood = document.getElementById(`counterGood`);
@@ -39,7 +40,7 @@ let EheadText = document.getElementById(`headText`);
 
 EbtCheck.addEventListener("click", checkWords);
 EbtChangeMode.addEventListener("click", changeLangMode);
-EbtLearnedWords.addEventListener("click", writeFile);
+EbtLearnedWords.addEventListener("click", () => checkWords(true));
 
 //чтение excel файла 
 function readFile(input) {
@@ -85,34 +86,46 @@ function randomInteger(min, max) {
     return Math.round(rand);
 }
 //проверка соответствия
-function checkWords(){
-    if (langSecondData[idWord].trim().toUpperCase() === document.getElementById('inputWord').value.trim().toUpperCase()){
+function checkWords(btLearn){
+    if (langSecondData[idWord].trim().toUpperCase() === document.getElementById('inputWord').value.trim().toUpperCase()) {
         lastAnswer = true;
-        EbtCheck.style.background = `darkgreen`;
         counterGood += 1;
         timeUpdate = 500;
         Ecounters.style.display = `block`;
-    }else{
+
+        if (btLearn === true) {
+            wordLearned[idWord] = `Learned`;
+            EbtLearnedWords.style.background = `darkgreen`;
+            checkLearn();
+        } else {
+            EbtCheck.style.background = `darkgreen`;
+        }
+    } else {
         lastAnswer = idWord;
-        if (EinputWord.value.trim().toUpperCase() === ``){
+        if (EinputWord.value.trim().toUpperCase() === ``) {
             Eanswer.style.color = `red`;
             Eanswer.innerText = `вы ничего не ввели`;
-        }else{
+        } else {
             Eanswer.innerText = `${langSecondData[idWord]}`;
-           EbtCheck.style.background = `#ff2b2b`;
             counterBad += 1;
             Ecounters.style.display = `block`;
+            if (btLearn === true) {
+                EbtLearnedWords.style.background = `#ff2b2b`;
+            } else {
+                EbtCheck.style.background = `#ff2b2b`;
+            }
         }
         EpreAnswer.style.display = `block`;
         timeUpdate = 1500;
     }
     updateCounter();
     idWord = undefined;
-   EinputWord.value = ``;
+    EinputWord.value = ``;
     setTimeout(() => {
         searchWord(langFirstData);
-       Eanswer.innerText = ``;
-       EbtCheck.style.background = `#3F51B5`;
+        Eanswer.innerText = ``;
+        EbtCheck.style.background = `#3F51B5`;
+        EbtLearnedWords.style.background = `#3F51B5`;
         EpreAnswer.style.display = `none`;
         Eanswer.style.color = `black`;
     }, timeUpdate)
@@ -179,7 +192,7 @@ function learnAllWords(count){
     EreadFile.style.display = `none`;
     Etraining.style.display = `none`;
     Econgrat.style.display = `block`;
-    Econgrat.innerText = `The end. You are learned ${count} words`;
+    EcongratText.innerText = `The end. You are learned ${count} words!`;
 }
 //перевод насчитанных секунд в формат "ЧЧ:ММ:СС"
 function createTime(time){
@@ -205,7 +218,6 @@ setInterval(() => {
     lastTime += 1;
     workTime += 1;
     EworkTime.innerText = `${createTime(workTime)}`;
-    EbtLearnedWords.style.background = `#3F51B5`;
 }, 1000);
 //смена языков местами
 function changeLangMode() {
@@ -224,10 +236,5 @@ function changeLangMode() {
     searchWord(langFirstData);
 }
 
-function writeFile(){
-    wordLearned[idWord] = `Learned`;
-    EbtLearnedWords.style.background = `darkgreen`;
-    checkLearn();
-}
 
 
